@@ -35,14 +35,20 @@ class brikke(object):
         glutSolidSphere(0.5,40,40)
         glPopMatrix();
     def printut(self):
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         print self.id  
+
         #glFlush()
-    def flyttTil(self):    
-        self.x = -0.5
-        self.y = -0.5
-        self.isRed = 0.0
+    def flyttH(self):  
+        #glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+  
+        self.x = self.x+1.0
+    def flyttV(self):    
+        self.x = self.x-1.0    
+    def flyttOpp(self):    
+        self.y = self.y+1.0
+    def flyttNed(self):    
+        self.y = self.y-1.0
         
         #self.drawsphare()
         
@@ -74,7 +80,7 @@ def main():
     
     initBrikke()
     
-   
+    glutReshapeFunc(reshape)
     glutDisplayFunc(display)
     
     glMatrixMode(GL_PROJECTION)
@@ -111,8 +117,9 @@ def drawBoard():
 #                 else:
 #                     glMaterialfv(GL_FRONT,GL_DIFFUSE,red)   
 #                 glRectf(x-4, y-2, x -3, y -1)
-#                 
-                
+#     
+    print 'draw'            
+    #glPushMatrix();           
     red=GLfloat_3(1,0,0)
     blue=GLfloat_3(0,0,1)
     for i in range (0,8):
@@ -185,7 +192,7 @@ def drawBoard():
     glNormal3d(0,-1,0)
     glVertex3f(-4*1,-4*1,0)
     glEnd()    
-                
+    #glPopMatrix();           
                 
 # def drawsphare(x, y, isRed):
 #     glPushMatrix();
@@ -224,9 +231,7 @@ def rounding_X(x):
         else:
             return i+0.5
     else:
-        return i
-            
-            
+        return i           
 def rounding_Y(x):
     #pass
     i = round(x*2)
@@ -244,19 +249,34 @@ def rounding_Y(x):
               
 def processSpecialKeys(key, xx, yy):
     print key
+    print xx
     
-    b = brikker[0]
-    if key == 's' : 
-        b = brikker[BrikkeID]       
-        b.flyttTil()
-        display()
+    b = brikker[0] 
+    if key == 'w' : 
+             
+        b.flyttOpp()
+        
+    elif key == 's' : 
+             
+        b.flyttNed()
+        
+    elif key == 'a' : 
+             
+        b.flyttV()
+        
+    elif key == 'd' : 
+             
+        b.flyttH()
+        
+     
+        
     elif key == '1' :        
         BrikkeID = 0
         
     elif key == '2' :        
         BrikkeID = 1
         #b.printut()
-        
+    display()    
         
         
 def initBrikke():
@@ -282,6 +302,16 @@ def initBrikke():
 def drawBrikke():
     for b in brikker:
         b.drawsphare()           
+ 
+def reshape (width, height):
+    glViewport(0, 0, width, height)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    gluPerspective(45.0, width/height, 1, 100.0)
+    glMatrixMode(GL_MODELVIEW)
+    glLoadIdentity()
+    gluLookAt(0, 3, 5, 0, 0, 0, 0, 1, 0)    
+    
     
 def display():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
