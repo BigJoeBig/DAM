@@ -12,6 +12,8 @@ class MouseHandler:
         if (button == GLUT_LEFT_BUTTON) and (state == GLUT_DOWN):
             self.mouse[0] = x
             self.mouse[1] = y
+        if(button == GLUT_RIGHT_BUTTON) and (state == GLUT_DOWN):
+            self.selectPiece(x,y)
 
     def mouse_moved(self, x, y):
         if self.button != GLUT_LEFT_BUTTON:
@@ -20,12 +22,18 @@ class MouseHandler:
         self.rotation[1] += (x - self.mouse[0]) / 85
         glutPostRedisplay()
 
-
     def getRotation(self):
-        return self.rotation   
+        return self.rotation
 
     def getMouse(self):
         return self.mouse
 
+
+    def sharpenCoordinates(self, x, y):
+        print x, y
+        return x, y
+
+    def selectPiece(self, x, y):
+        self.sharpenCoordinates(x,y)
 
 

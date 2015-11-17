@@ -1,3 +1,1 @@
-brikker = []
-
-ID = 99
+blockSize = 1 

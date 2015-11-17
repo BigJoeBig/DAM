@@ -5,6 +5,8 @@ import sys
 import math
 
 class brikke(object):
+    
+    
     def __init__(self, x, y, isRed, id):
         self.x = x
         self.y = y
@@ -17,17 +19,21 @@ class brikke(object):
         glPushMatrix();
         red = [1.0,0.,0.,1.]
         white = [1.,1.,1.,1.]
+        glTranslatef(self.x, self.y, 0.5);
         if self.isRed==1.0:
             glMaterialfv(GL_FRONT,GL_DIFFUSE,red)
+            
+            glutSolidSphere(0.5,40,40)
         else:
             glMaterialfv(GL_FRONT,GL_DIFFUSE,white)
+            glutSolidCube(0.7, 40,40)
         
        
-        glTranslatef(self.x, self.y, 0);
+        
 
         
-        glutSolidSphere(0.5,40,40)
         glPopMatrix();
+        
     def printut(self):
 
         print self.id  

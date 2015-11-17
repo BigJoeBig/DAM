@@ -1,7 +1,7 @@
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
-from var import ID
+
 
 #from Project import brikker
 
