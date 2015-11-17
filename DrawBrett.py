@@ -11,8 +11,8 @@ class DrawBrett:
     def drawBrettTop(self):
         red=GLfloat_3(1,0,0)
         blue=GLfloat_3(0,0,1)
-        for i in range (0,8):
-            for j in range (0,8):
+        for i in range (0,6):
+            for j in range (0,6):
                 glBegin(GL_POLYGON)
                 if (i%2 == 0 and j%2 != 0) or (i%2 != 0 and j%2 == 0):
                     glMaterialfv(GL_FRONT,GL_DIFFUSE,red)

@@ -54,7 +54,7 @@ class Project():
         red=GLfloat_3(1,0,0)
         blue=GLfloat_3(0,0,1)
         for i in range (0,8):
-            for j in range (0,8):
+            for j in range (0,5):
                 glBegin(GL_POLYGON)
                 if (i%2 == 0 and j%2 != 0) or (i%2 != 0 and j%2 == 0):
                     glMaterialfv(GL_FRONT,GL_DIFFUSE,red)
@@ -126,33 +126,7 @@ class Project():
         glVertex3f(-4*1,-4*1,0)
         glEnd()    
         #glPopMatrix();           
-                    
-    # def drawsphare(x, y, isRed):
-    #     glPushMatrix();
-    #     #x=-3.5 er  ventre x=3.5 er  hoyre , y=2,5 er topp  y=-2.5 er bunn
-    #     glTranslatef(x, y, 0);
-    #     red = [1.0,0.,0.,1.]
-    #     white = [1.,1.,1.,1.]
-    #     if isRed==1.0:
-    #         glMaterialfv(GL_FRONT,GL_DIFFUSE,red)
-    #     else:
-    #         glMaterialfv(GL_FRONT,GL_DIFFUSE,white)
-    # 
-    #     
-    #     
-    #     glutSolidSphere(0.5,40,40)
-    #     glPopMatrix();
-    #     color = [1.0,0.,0.,1.]
-    #     glMaterialfv(GL_FRONT,GL_DIFFUSE,color)
-    #     glutSolidSphere(0.5,20,20)
-    #     glLoadIdentity()
-    #     glPushMatrix();
-    #     glTranslatef(0,10,-5);
-    #     #DrawObjectOne
-    #     glPopMatrix();
-    # #/DrawObjectTwo
-    #    # glTranslatef(0,10,-5);
-    #  
+
     def rounding_X(self, x):
         #pass
         i = round(x*2)
@@ -192,8 +166,8 @@ class Project():
         i = 0;  
         
         while i < len(numbers):
-            x= self.rounding_X(((numbers[i]/800)*7.)-3.5)
-            y = -self.rounding_Y(((numbers[i+1]/498)*5.)-3)
+            x= self.rounding_X(((numbers[i]/800)*8.)-3.5)
+            y = -self.rounding_Y(((numbers[i+1]/498)*5.)-1)
             
             xw = ((numbers[i]/800)*7.)-3.5
             yw= -(((numbers[i+1]/498)*5.)-3)
